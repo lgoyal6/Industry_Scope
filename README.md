@@ -24,6 +24,25 @@ missing or its last run failed, the API and UI identify the source and reason.
 
 The live explorer and these direct links require no account.
 
+## Quant research, including the negative result
+
+`analysis/macro_forecast.py` tests whether each sector's release-lagged macro
+series improves an expanding-mean return forecast. `analysis/sector_allocation.py`
+then freezes one cross-sectional use of those forecasts: equal-weight the top
+and bottom forecast quartiles, compare it with equal-weight sectors and 12-1
+momentum, and charge 5, 10, and 25 basis points per dollar traded.
+
+```bash
+python -m analysis.macro_forecast
+python -m analysis.sector_allocation
+```
+
+The current exported panel is a negative result. Across 211 monthly decisions,
+the primary 10 bp portfolio had -0.083 rank IC and -0.63 Sharpe; none of six
+planned superiority tests survived Holm correction. The code reports that
+failure rather than turning a backtest into an alpha claim. See the
+[frozen protocol, controls, and full result](docs/sector-allocation-research.md).
+
 ## Architecture
 
 ```text
@@ -55,6 +74,7 @@ recomputes date-window metrics without another request.
 ingest/                       Python ingest and versioned SQL migrations
   config/                     Sector, FRED, company-group, and event registries
   sources/                    One adapter per upstream source
+analysis/                     Release-lag forecasts and frozen allocation test
 web/                          Next.js application and client workbook generator
   app/industry/[slug]         One sector: performance, groups, companies, capital
   app/etf/[ticker]            One fund: risk, fees, composition
