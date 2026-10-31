@@ -33,6 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <footer>
           <span>IndustryScope</span>
+          <a href="https://github.com/lgoyal6/Industry_Scope" target="_blank" rel="noopener noreferrer">GitHub</a>
           <span>Source data only. No generated market narrative.</span>
         </footer>
       </body>
