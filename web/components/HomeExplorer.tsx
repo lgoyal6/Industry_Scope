@@ -106,6 +106,7 @@ export default function HomeExplorer({ sectors, performance, pricesThrough, last
     <main id="main-content" tabIndex={-1}>
       <section className="home-hero">
         <div className="eyebrow">Built only from public data</div>
+        <p className="grid-note" role="note">This dashboard is a dated snapshot. Check each source’s as-of date before treating it as current. A successful page load does not mean the underlying data refreshed.</p>
         <h1>See the whole industry.</h1>
         <p>Market performance, fund composition, SEC fundamentals, private capital, macro indicators, and sourced events-aligned to one date range.</p>
         <div className="search-wrap">
